@@ -13,9 +13,9 @@ import java.util.Random;
  * @createTime 2020年06月21日 07:47:00
  */
 public class RandomLoadBalance extends AbstractLoadBalance {
+    private static final Random random = new Random();
     @Override
     protected String doSelect(List<String> serviceAddresses, RpcRequest rpcRequest) {
-        Random random = new Random();
         return serviceAddresses.get(random.nextInt(serviceAddresses.size()));
     }
 }

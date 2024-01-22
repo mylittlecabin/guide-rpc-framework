@@ -17,6 +17,9 @@ public class RpcConstants {
     public static final Charset DEFAULT_CHARSET = StandardCharsets.UTF_8;
     //version information
     public static final byte VERSION = 1;
+
+    public static final int FULL_LENGTH_FIELD_LENGTH = 4;
+    public static final int VERSION_LENGTH = 1;
     public static final byte TOTAL_LENGTH = 16;
     public static final byte REQUEST_TYPE = 1;
     public static final byte RESPONSE_TYPE = 2;

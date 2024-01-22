@@ -54,9 +54,16 @@ public class RpcMessageDecoder extends LengthFieldBasedFrameDecoder {
      * @param maxFrameLength      Maximum frame length. It decide the maximum length of data that can be received.
      *                            If it exceeds, the data will be discarded.
      * @param lengthFieldOffset   Length field offset. The length field is the one that skips the specified length of byte.
+     *                            长度字段数据所在起始位置；
      * @param lengthFieldLength   The number of bytes in the length field.
+     *                            长度字段数据的长度；
      * @param lengthAdjustment    The compensation value to add to the value of the length field
+     *                            补偿值；长度字段代表的长度，如果只是代表数据内容长度，则为0；
+     *                            正表示长度字段后需要跳过的指定长度后，长度字段值不受影响，为内容数据长度；
+     *                            负数表示长度字段值减去长度字段前和自身长度，剩余值表示其后内容长度；
+     *                            这个字段较难理解，具体参考 {@link LengthFieldBasedFrameDecoder}类注释中的举例；
      * @param initialBytesToStrip Number of bytes skipped.
+     *                            解析后的结果从头开始去除的指定字节数的数据；
      *                            If you need to receive all of the header+body data, this value is 0
      *                            if you only want to receive the body data, then you need to skip the number of bytes consumed by the header.
      */

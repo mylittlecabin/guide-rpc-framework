@@ -39,6 +39,7 @@ public class CustomScannerRegistrar implements ImportBeanDefinitionRegistrar, Re
             // get the value of the basePackage property
             rpcScanBasePackages = rpcScanAnnotationAttributes.getStringArray(BASE_PACKAGE_ATTRIBUTE_NAME);
         }
+        //默认取@RpcScan所在注解类的package为basePackage
         if (rpcScanBasePackages.length == 0) {
             rpcScanBasePackages = new String[]{((StandardAnnotationMetadata) annotationMetadata).getIntrospectedClass().getPackage().getName()};
         }

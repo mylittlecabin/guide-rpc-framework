@@ -50,7 +50,7 @@ public class RpcMessageEncoder extends MessageToByteEncoder<RpcMessage> {
             out.writeBytes(RpcConstants.MAGIC_NUMBER);
             out.writeByte(RpcConstants.VERSION);
             // leave a place to write the value of full length
-            out.writerIndex(out.writerIndex() + 4);
+            out.writerIndex(out.writerIndex() + RpcConstants.FULL_LENGTH_FIELD_LENGTH);
             byte messageType = rpcMessage.getMessageType();
             out.writeByte(messageType);
             out.writeByte(rpcMessage.getCodec());
@@ -80,7 +80,7 @@ public class RpcMessageEncoder extends MessageToByteEncoder<RpcMessage> {
                 out.writeBytes(bodyBytes);
             }
             int writeIndex = out.writerIndex();
-            out.writerIndex(writeIndex - fullLength + RpcConstants.MAGIC_NUMBER.length + 1);
+            out.writerIndex(RpcConstants.MAGIC_NUMBER.length + RpcConstants.VERSION_LENGTH);
             out.writeInt(fullLength);
             out.writerIndex(writeIndex);
         } catch (Exception e) {
